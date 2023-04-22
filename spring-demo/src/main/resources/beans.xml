@@ -5,6 +5,10 @@
 	   xsi:schemaLocation="http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop-2.0.xsd
 			http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
 
-	<bean id="myTestBean" class="org.springframework.demo.MyTestBean"></bean>
+	<bean id="aServcie" class="org.springframework.demo.AServcie">
+		<property name="bServcie" ref="bServcie"></property>
+	</bean>
+
+	<bean id="bServcie" class="org.springframework.demo.BServcie"></bean>
 
 </beans>

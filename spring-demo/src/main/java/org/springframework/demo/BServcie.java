@@ -1,6 +1,6 @@
 package org.springframework.demo;
 
-public class MyTestBean {
+public class BServcie {
 	public String getTestStr() {
 		return testStr;
 	}
