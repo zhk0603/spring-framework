@@ -213,8 +213,12 @@ public abstract class AbstractRefreshableApplicationContext extends AbstractAppl
 	 */
 	protected void customizeBeanFactory(DefaultListableBeanFactory beanFactory) {
 		if (this.allowBeanDefinitionOverriding != null) {
+			//设置是否允许通过注册具有相同名称的不同定义来覆盖 bean 定义，自动替换前者。如果没有，将会抛出异常。这也适用于覆盖别名。
+			//默认值为“true”。
 			beanFactory.setAllowBeanDefinitionOverriding(this.allowBeanDefinitionOverriding);
 		}
+
+		//设置是否允许 beans 之间的循环引用 - 并自动尝试解决它们。
 		if (this.allowCircularReferences != null) {
 			beanFactory.setAllowCircularReferences(this.allowCircularReferences);
 		}

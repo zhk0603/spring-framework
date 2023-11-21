@@ -9,6 +9,10 @@
 		<property name="bServcie" ref="bServcie"></property>
 	</bean>
 
-	<bean id="bServcie" class="org.springframework.demo.BServcie"></bean>
+	<bean id="bServcie" class="org.springframework.demo.BServcie">
+		<property name="aServcie" ref="aServcie"></property>
+	</bean>
+
+	<bean id="myBeanFactoryPostProcessor" class="org.springframework.demo.MyBeanFactoryPostProcessor" />
 
 </beans>
