@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:aop="http://www.springframework.org/schema/aop"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:tx="http://www.springframework.org/schema/tx"
+	   xsi:schemaLocation="http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+			http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<aop:aspectj-autoproxy expose-proxy="true" />
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+
+	<!-- 配置数据源 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<!-- 数据源配置省略 -->
+	</bean>
+
+	<!-- 配置事务管理器 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+
+
+	<bean id="aServcie" class="org.springframework.demo.AServcie">
+		<property name="bServcie" ref="bServcie"></property>
+	</bean>
+
+	<bean id="bServcie" class="org.springframework.demo.BServcie">
+		<property name="aServcie" ref="aServcie"></property>
+	</bean>
+
+	<bean id="myBeanFactoryPostProcessor" class="org.springframework.demo.MyBeanFactoryPostProcessor" />
+
+	<bean class="org.springframework.demo.AopTest" id="aopTest" />
+
+</beans>

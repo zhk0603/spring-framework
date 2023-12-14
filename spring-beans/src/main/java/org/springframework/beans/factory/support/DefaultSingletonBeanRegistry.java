@@ -359,7 +359,7 @@ public class DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements
 	 * @see #isSingletonCurrentlyInCreation
 	 */
 	protected void afterSingletonCreation(String beanName) {
-		//只要 bean 在 inCreationCheckExclusions 里面就不检查， 如果不在，并且此bean没有在创建中，就会抛出异常。
+		//只要 bean 在 inCreationCheckExclusions 里面就不检查， 如果不在，并且此bean没有在创建中，就会抛出异常。是
 		if (!this.inCreationCheckExclusions.contains(beanName) && !this.singletonsCurrentlyInCreation.remove(beanName)) {
 			throw new IllegalStateException("Singleton '" + beanName + "' isn't currently in creation");
 		}

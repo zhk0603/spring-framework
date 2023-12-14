@@ -1,10 +1,8 @@
 package org.springframework.demo;
 
-import org.springframework.beans.factory.BeanFactory;
-import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.core.io.ClassPathResource;
 
 import java.util.logging.Logger;
 
@@ -16,9 +14,10 @@ public class Main {
 //		BeanFactory factory = new XmlBeanFactory(new ClassPathResource("beans.xml"));
 //		AServcie bean =  (AServcie)factory.getBean("aServcie");
 
-		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
-		AServcie bean =  (AServcie)context.getBean("aServcie");
+//		ApplicationContext context = new ClassPathXmlApplicationContext("aopTest.xml");
+		ApplicationContext context = new AnnotationConfigApplicationContext(AnnonConfig.class);
 
+		AServcie bean =  (AServcie)context.getBean("aServcie");
 		bean.test();
 	}
 }

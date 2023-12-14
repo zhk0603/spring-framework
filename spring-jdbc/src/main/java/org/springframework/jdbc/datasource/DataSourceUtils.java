@@ -128,6 +128,7 @@ public abstract class DataSourceUtils {
 				holderToUse.requested();
 				TransactionSynchronizationManager.registerSynchronization(
 						new ConnectionSynchronization(holderToUse, dataSource));
+				// 将资源标记为与事务同步。
 				holderToUse.setSynchronizedWithTransaction(true);
 				if (holderToUse != conHolder) {
 					TransactionSynchronizationManager.bindResource(dataSource, holderToUse);
